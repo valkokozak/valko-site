@@ -19,6 +19,28 @@
       backdrop-filter: brightness(0.85) blur(2px);
     }
 
+    #intro {
+      font-size: 1.5rem;
+      color: #00ffcc;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: .15em solid #00ffcc;
+      width: 0;
+      animation: typing 4s steps(30, end) forwards, blink .75s step-end infinite;
+      margin-bottom: 2rem;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      from, to { border-color: transparent }
+      50% { border-color: #00ffcc; }
+    }
+
     h1 {
       font-size: 3.5rem;
       color: #ffd700;
@@ -34,7 +56,6 @@
       background-color: rgba(0, 0, 0, 0.6);
       padding: 1rem;
       border-radius: 10px;
-      animation: fadeIn 2s ease-in-out;
     }
 
     .link-button {
@@ -56,6 +77,12 @@
       background-color: #fff269;
     }
 
+    .donation-counter {
+      font-size: 1.2rem;
+      margin-top: 2rem;
+      color: #00ffcc;
+    }
+
     .footer {
       margin-top: 4rem;
       font-size: 0.95rem;
@@ -67,20 +94,23 @@
       50% { text-shadow: 0 0 20px #ffeb3b; }
       100% { text-shadow: 0 0 5px #ffd700; }
     }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
   </style>
 </head>
 <body>
+
+  <div id="intro">> Initializing MemeFront Protocol... 🔥</div>
+
   <h1>$VALKO</h1>
   <p>
     Crypto Cossack coin created to support the Ukrainian front and flip the market.<br />
     Half for freedom. Half for the flip. No mercy. 🇺🇦🔥
   </p>
   <a class="link-button" href="https://pump.fun" target="_blank">Buy on pump.fun</a>
+
+  <div class="donation-counter" id="donationCounter">
+    🔄 Loading battle fund status...
+  </div>
+
   <div class="footer">
     &copy; 2025 $VALKO Army. Made with courage for freedom.
   </div>
@@ -89,5 +119,18 @@
     <source src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/KieLoKaz/Aperture/KieLoKaz_-_01_-_Lone_Wolf.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
+
+  <script>
+    // Симуляція живого лічильника донатів
+    let donations = 0;
+    function updateDonations() {
+      donations += Math.floor(Math.random() * 5) + 1;
+      document.getElementById('donationCounter').innerHTML =
+        "🎯 $VALKO Battle Fund: " + donations + " SOL gathered for drones.";
+    }
+    setInterval(updateDonations, 3000);
+    updateDonations();
+  </script>
+
 </body>
 </html>
